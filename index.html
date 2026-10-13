@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101514" />
+  <meta name="description" content="ECHO FRONT 回声前线 — 在霓虹训练场中生存、瞄准、射击。Three.js 第一人称枪战游戏。" />
+  <title>ECHO FRONT 回声前线 · 免费在线 Three.js 枪战游戏</title>
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:title" content="ECHO FRONT 回声前线 · 免费在线枪战游戏" />
+  <meta property="og:description" content="打开网页即可体验第一人称生存射击。精细机械敌人、三种难度、无限波次，无需下载。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d8fa65'/%3E%3Cpath d='M18 17h30v7H26v5h17v7H26v5h22v7H18z' fill='%23101514'/%3E%3C/svg%3E" />
+  <script type="module" crossorigin src="./assets/index-CePKFWEc.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/three-DXps3Wu9.js">
+  <link rel="stylesheet" crossorigin href="./assets/index-DskTRsMi.css">
+</head>
+<body>
+  <canvas id="world" aria-label="三维枪战训练场"></canvas>
+  <div class="scene-shade"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="回声前线首页"><span class="brand-mark">E<span></span></span><span>ECHO<span class="brand-front">FRONT</span></span></a>
+    <div class="header-middle"><span class="small-dot"></span> 独立行动 <span class="divider">/</span> SOLO OPERATIONS</div>
+    <div class="header-tools">
+      <button id="sound-button" class="icon-button" aria-label="关闭音效" title="音效"><svg viewBox="0 0 24 24"><path d="M11 4 6 8H3v8h3l5 4V4Zm4 4a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg></button>
+      <button id="settings-button" class="icon-button" aria-label="打开设置" title="设置"><svg viewBox="0 0 24 24"><path d="m9 3-.7 2.4-2 .9L4 5.7 2 9l1.7 1.8v2.4L2 15l2 3.3 2.3-.6 2 .9L9 21h6l.7-2.4 2-.9 2.3.6 2-3.3-1.7-1.8v-2.4L22 9l-2-3.3-2.3.6-2-.9L15 3H9Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+      <span class="build-label">V.02 <span class="small-dot"></span></span>
+    </div>
+  </header>
+
+  <main id="lobby" class="lobby">
+    <section class="hero">
+      <div class="eyebrow"><span class="line"></span> THREE.JS · 第一人称生存射击</div>
+      <h1>ECHO<br/><span>FRONT<span class="title-dot">.</span></span></h1>
+      <div class="hero-subtitle">回声前线 <span class="subtitle-line"></span> 瞄准核心。突破封锁。</div>
+      <p class="hero-description">踏入机械禁区，在交火中找到你的节奏。<br/>保持移动，精准瞄准，撑过下一波。</p>
+      <div class="difficulty-picker" role="group" aria-label="选择难度">
+        <span class="field-label">作战难度</span>
+        <button data-difficulty="easy" class="difficulty">新兵</button>
+        <button data-difficulty="normal" class="difficulty active" aria-pressed="true">常规</button>
+        <button data-difficulty="hard" class="difficulty">精英</button>
+      </div>
+      <button id="start-button" class="start-button" disabled><span><svg viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></svg><span id="start-label">正在载入训练场…</span></span><span class="button-arrow">↗</span></button>
+      <div class="start-note"><span class="small-dot"></span> 无需下载 <span>·</span> 即刻开战 <span>·</span> 推荐使用键盘与鼠标</div>
+      <div class="hero-stats"><div><strong>03</strong><span>机械敌种</span></div><span class="stat-divider"></span><div><strong>∞</strong><span>生存波次</span></div><span class="stat-divider"></span><div><strong>AR</strong><span>精制武器</span></div></div>
+    </section>
+    <aside class="arena-info">
+      <div class="arena-tag"><span class="small-dot"></span> ARENA ONLINE <span>01 / 01</span></div>
+      <div class="arena-card">
+        <div class="arena-card-top"><span class="field-label">当前作战区域</span><svg viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M9 12h6m-3-3v6"/></svg></div>
+        <h2>零号基地<span>OUTPOST ZERO</span></h2>
+        <div class="map-mini" aria-hidden="true"><div class="map-grid"></div><span class="map-block b1"></span><span class="map-block b2"></span><span class="map-block b3"></span><span class="map-block b4"></span><span class="map-block b5"></span><span class="map-player"></span><span class="map-target t1"></span><span class="map-target t2"></span><span class="map-target t3"></span><span class="map-coord">34° 07′ N &nbsp; 118° 19′ E</span></div>
+        <div class="map-details"><span><i class="map-key"></i> 开放式训练场</span><span>夜间行动 <svg viewBox="0 0 24 24"><path d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></span></div>
+      </div>
+      <div class="mission-strip"><span class="mission-symbol">⌖</span><div><span>你的任务</span><strong>消灭目标。保持生存。</strong></div><span class="mission-arrow">↗</span></div>
+    </aside>
+  </main>
+
+  <footer id="controls-footer" class="controls-footer">
+    <div class="control-item"><span class="key-cluster"><kbd>W</kbd><span><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span></span><span>移动<span>MOVE</span></span></div>
+    <div class="control-item"><svg class="mouse-icon" viewBox="0 0 24 32"><rect x="3" y="2" width="18" height="28" rx="9"/><path d="M12 2v12M3 14h18"/></svg><span>瞄准 / 射击<span>AIM / SHOOT</span></span></div>
+    <div class="control-item"><kbd>R</kbd><span>换弹<span>RELOAD</span></span></div>
+    <div class="control-item"><kbd class="wide-key">SHIFT</kbd><span>疾跑<span>SPRINT</span></span></div>
+    <div class="control-item"><kbd class="wide-key">SPACE</kbd><span>跳跃<span>JUMP</span></span></div>
+    <div class="control-item"><kbd class="wide-key">ESC</kbd><span>暂停<span>PAUSE</span></span></div>
+    <div class="footer-end"><span class="small-dot"></span> 准备就绪，士兵。</div>
+  </footer>
+
+  <section id="hud" class="hud hidden" aria-label="游戏状态">
+    <div class="hud-top"><div class="wave-pill"><span class="small-dot"></span> <span id="wave-label">WAVE 01</span><span id="enemy-count">剩余 4 个目标</span></div><div class="score-box"><span>击杀</span><strong id="kills">00</strong><span class="divider">/</span><span>得分</span><strong id="score">0000</strong></div></div>
+    <div class="compass"><span>W</span><span>· &nbsp; · &nbsp; ·</span><strong id="heading">N</strong><span>· &nbsp; · &nbsp; ·</span><span>E</span></div>
+    <div class="operator-status"><span id="stance-label">行动 / READY</span><div class="stamina-track"><div id="stamina-bar"></div></div><span class="status-hint">SHIFT 冲刺 · C 蹲伏</span></div><div id="target-readout" class="target-readout"></div><div id="crosshair" class="crosshair"><i></i><i></i><i></i><i></i><b></b></div>
+    <div id="hit-marker" class="hit-marker">×</div>
+    <div id="damage-flash" class="damage-flash"></div>
+    <div class="hud-bottom"><div class="health-panel"><span class="field-label">生命值 <span id="health">100</span></span><div class="health-track"><div id="health-bar"></div></div><span class="health-caption">OPERATOR / 01 <span>＋</span></span></div><div class="weapon-panel"><span class="field-label">AR-01 <span>突击步枪</span></span><div class="ammo"><strong id="ammo">30</strong><span>/ <span id="reserve">180</span></span></div><div id="reload-label">自动步枪 <span>5.56 MM</span></div></div></div>
+    <div class="radar-panel"><canvas id="radar" width="160" height="160" aria-label="敌人方位雷达"></canvas><span>OUTPOST ZERO</span></div>
+    <div id="announcement" class="announcement"></div>
+    <div id="kill-feed" class="kill-feed"></div>
+    <button id="pause-button" class="in-game-pause" aria-label="暂停游戏">Ⅱ</button>
+    <div id="touch-controls" class="touch-controls"><div class="touch-pad"><button data-key="KeyW" aria-label="前进">↑</button><div><button data-key="KeyA" aria-label="左移">←</button><button data-key="KeyS" aria-label="后退">↓</button><button data-key="KeyD" aria-label="右移">→</button></div></div><button id="touch-fire" aria-label="射击">◎</button><button id="touch-reload" aria-label="换弹">R</button><button id="touch-aim" aria-label="切换瞄准">⌖</button><button id="touch-jump" aria-label="跳跃">↥</button><button id="touch-crouch" data-key="KeyC" aria-label="蹲伏">C</button></div>
+  </section>
+
+  <div id="pause-overlay" class="modal-overlay hidden"><section class="dialog"><div class="eyebrow"><span class="line"></span> OPERATIONS PAUSED</div><h2>喘口气，再出发。</h2><p>训练已暂停，战场等你归来。</p><button id="resume-button" class="start-button"><span>继续作战</span><span>↗</span></button><button id="quit-button" class="secondary-button">返回训练大厅</button><div class="dialog-hint">WASD 移动 · 右键瞄准 · R 换弹 · C 蹲伏</div></section></div>
+  <div id="gameover-overlay" class="modal-overlay hidden"><section class="dialog"><div class="eyebrow"><span class="line"></span> OPERATION COMPLETE</div><h2>行动结束<span class="accent">.</span></h2><p>每次出发，都比上次更强。</p><div class="result-grid"><div><span>得分</span><strong id="final-score">0</strong></div><div><span>击杀</span><strong id="final-kills">0</strong></div><div><span>波次</span><strong id="final-wave">1</strong></div><div><span>生存时间</span><strong id="final-time">0:00</strong></div></div><button id="restart-button" class="start-button"><span>再次出击</span><span>↗</span></button><button id="home-button" class="secondary-button">返回训练大厅</button><div id="best-score" class="dialog-hint"></div></section></div>
+  <div id="settings-overlay" class="modal-overlay hidden"><section class="dialog settings-dialog"><button id="close-settings" class="close-button" aria-label="关闭设置">×</button><div class="eyebrow"><span class="line"></span> OPERATOR SETTINGS</div><h2>作战设置<span class="accent">.</span></h2><label class="setting-row" for="sensitivity">鼠标灵敏度 <output id="sensitivity-value">1.0</output></label><input id="sensitivity" type="range" min="0.3" max="2.5" step="0.1" value="1"/><label class="setting-row" for="volume">音效音量 <output id="volume-value">50%</output></label><input id="volume" type="range" min="0" max="100" value="50"/><button id="fullscreen-button" class="secondary-button">切换全屏 ↗</button><p class="settings-help">点击「开始行动」锁定鼠标，按 ESC 释放鼠标并暂停。触屏设备可拖动屏幕瞄准，使用屏幕按钮移动和射击。</p></section></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="fatal-error" class="modal-overlay hidden"><section class="dialog"><h2>训练场未能启动</h2><p id="error-message"></p><button onclick="location.reload()" class="secondary-button">重新加载</button></section></div>
+</body>
+</html>
+
